@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { usePOS } from '../../context/POSContext';
 import { X, Users, UtensilsCrossed } from 'lucide-react';
 
@@ -13,6 +13,15 @@ export const TableSelectModal: React.FC<TableSelectModalProps> = ({ isOpen, onCl
   const [selectedPax, setSelectedPax] = useState(pax);
   const [custName, setCustName] = useState(customerName);
   const [type, setType] = useState(orderType);
+
+  useEffect(() => {
+    if (isOpen) {
+      setSelectedTable(tableNumber);
+      setSelectedPax(pax);
+      setCustName(customerName);
+      setType(orderType);
+    }
+  }, [isOpen, tableNumber, pax, customerName, orderType]);
 
   if (!isOpen) return null;
 

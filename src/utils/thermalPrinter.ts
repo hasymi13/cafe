@@ -33,6 +33,9 @@ export function formatThermalReceiptText(
 
   // Order Details
   lines.push(padRow(`No. Order: #${order.orderNumber}`, order.orderType));
+  if (order.customerName && order.customerName.trim()) {
+    lines.push(padRow('Pelanggan:', order.customerName));
+  }
   if (order.tableNumber && order.tableNumber !== '-') {
     lines.push(padRow(`Meja: ${order.tableNumber}`, `Pax: ${order.pax || 1}`));
   }

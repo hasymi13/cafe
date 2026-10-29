@@ -21,7 +21,7 @@ interface PaymentModalProps {
 }
 
 export const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose }) => {
-  const { cartTotals, checkoutOrder, printerSettings, updatePrinterSettings, cafeInfo } = usePOS();
+  const { cartTotals, checkoutOrder, printerSettings, updatePrinterSettings, cafeInfo, customerName, setCustomerName } = usePOS();
   const [selectedMethod, setSelectedMethod] = useState<PaymentMethod>('cash');
   const [cashAmountInput, setCashAmountInput] = useState<string>('');
   const [qrisStatus, setQrisStatus] = useState<'waiting' | 'paid'>('waiting');
@@ -96,14 +96,28 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose }) =
           </button>
         </div>
 
-        {/* Total Banner */}
-        <div className="bg-blue-50 px-6 py-3 border-b border-blue-100 flex items-center justify-between">
-          <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
-            Total Tagihan
-          </span>
-          <span className="text-2xl font-black text-[#1976d2]">
-            {formatRupiah(total)}
-          </span>
+        {/* Total & Customer Name Banner */}
+        <div className="bg-blue-50 px-6 py-3 border-b border-blue-100 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex-1 min-w-[200px]">
+            <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-1">
+              Nama Pelanggan (Tercetak di Struk)
+            </label>
+            <input
+              type="text"
+              value={customerName}
+              onChange={(e) => setCustomerName(e.target.value)}
+              placeholder="Contoh: Pak Budi / Ibu Sarah / Meja 05"
+              className="w-full text-xs font-bold text-slate-800 bg-white border border-blue-200 rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          <div className="text-right">
+            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">
+              Total Tagihan
+            </span>
+            <span className="text-2xl font-black text-[#1976d2]">
+              {formatRupiah(total)}
+            </span>
+          </div>
         </div>
 
         {/* Modal Body */}

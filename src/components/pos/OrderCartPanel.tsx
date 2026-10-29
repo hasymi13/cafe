@@ -32,6 +32,7 @@ export const OrderCartPanel: React.FC<OrderCartPanelProps> = ({ onOpenPaymentMod
     tableNumber,
     pax,
     cartTotals,
+    customerName,
     updateCartQuantity,
     removeFromCart,
     clearCart,
@@ -61,6 +62,7 @@ export const OrderCartPanel: React.FC<OrderCartPanelProps> = ({ onOpenPaymentMod
       orderType,
       tableNumber,
       pax,
+      customerName: customerName || (tableNumber && tableNumber !== '-' ? `Meja ${tableNumber}` : 'Pelanggan'),
       items: cart,
       subtotal: cartTotals.subtotal,
       serviceRate: cafeInfo.servicePercentage / 100,
@@ -132,7 +134,9 @@ export const OrderCartPanel: React.FC<OrderCartPanelProps> = ({ onOpenPaymentMod
                 <span>({pax} Pax - M{tableNumber})</span>
               )}
             </div>
-            <div className="text-[10px] text-slate-400 font-medium">Klik untuk ubah meja/tipe</div>
+            <div className="text-[11px] font-bold text-slate-700 truncate max-w-[220px]">
+              Pelanggan: <span className="text-blue-600 font-extrabold">{customerName || `Meja ${tableNumber}`}</span>
+            </div>
           </button>
 
           <button
