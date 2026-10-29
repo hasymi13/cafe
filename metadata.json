@@ -1,0 +1,6 @@
+{
+  "name": "CafePOS Pro - Sistem Kasir & Manajemen Kafe",
+  "description": "Aplikasi kasir cafe modern dengan manajemen stok, pelacakan pesanan dapur, cetak struk thermal otomatis, pembayaran digital QRIS, serta dasbor analitik dan laporan keuangan.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

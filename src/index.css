@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@layer utilities {
+  /* Hide scrollbars for clean POS tablet touch interfaces */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Thermal printer receipt styles */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #thermal-receipt-print-area, #thermal-receipt-print-area * {
+    visibility: visible;
+  }
+  #thermal-receipt-print-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 58mm; /* standard POS receipt width or 80mm */
+    margin: 0;
+    padding: 0;
+    background: white;
+    color: black;
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
